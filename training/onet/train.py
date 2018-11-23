@@ -8,7 +8,7 @@ from torchvision import transforms
 from models.onet import ONet
 from training.onet.trainer import ONetTrainer
 from training.onet.config import Config
-from tools.logger import Logger
+# from tools.logger import Logger
 from checkpoint import CheckPoint
 import os
 import config
@@ -47,7 +47,8 @@ optimizer = torch.optim.Adam(model.parameters(), lr=config.lr)
 scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=config.step, gamma=0.1)
 
 # Set trainer
-logger = Logger(config.save_path)
+# logger = Logger(config.save_path)
+logger = None
 trainer = ONetTrainer(config.lr, train_loader, model, optimizer, scheduler, logger, device)
 
 for epoch in range(1, config.nEpochs + 1):
